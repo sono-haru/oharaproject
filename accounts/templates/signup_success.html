@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}signup_success{% endblock %}
+{% block page_title %}Sign up{% endblock page_title %}
+{% block header_id %}header_signup_success{% endblock %}
+{% block contents %}
+    <div style="width: 480px; margin: auto;">
+            <h1 class='success_text'>登録が完了しました</h1>
+            <p class='success_login_button'><a href="{% url 'accounts:login' %}">ログインはこちらから</a></p>
+            <p>ログインをすることで、<a href="{% url "ohara:index" %}">大原NEWS</a>の投稿にコメントをしたり、<a href="{% url "ohara:keiziban" %}">掲示板</a>に投稿をすることができます。</p>
+    </div>
+{% endblock %}

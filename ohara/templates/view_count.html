@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}閲覧数{% endblock %}
+{% block page_title %}閲覧数{% endblock page_title %}
+{% block header_id %}header_view_count{% endblock %}
+{% block contents %}
+    <h2 class="view_information_h2">サイト情報</h2>
+    <div class="view_information_div">
+        <p class="view_information_p1">【累計閲覧数】 {{ count }}回</p>
+        <p class="view_information_p2">【最後に閲覧された時間:】 {{ last_viewed }}</p>
+    </div>
+    <div class="view_count_return_index">
+        <a href="{% url "ohara:index" %}">大原NEWSへ</a>
+    </div>
+{% endblock %}

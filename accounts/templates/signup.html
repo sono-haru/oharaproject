@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Sign up{% endblock %}
+{% block page_title %}Sign up{% endblock page_title %}
+{% block header_id %}header_signup{% endblock %}
+{% block header_home_logo %}<li class="ohara_logo"><a href="{% url 'ohara:index' %}"><img src={% static "assets/img/大原アイコン-removebg-preview.png" %} alt="大原logo"></a></li>{% endblock %}
+{% block contents %}
+<div style="width: 480px; margin: auto;">
+    <div class='container'>
+        <div class='row'>
+            <div class='col offset-2'>
+                <form method='post'>
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <p class='signup_box'>
+                            {{ field.label_tag }}<br>
+                            {{ field }}
+                            {% if field.help_text %}
+                                <p><small style='color: grey'>{{ field.help_text }}</small></p>
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <p class='error_text' style='color: red'>{{ error }}</p>
+                            {% endfor %}
+                        </p>
+                    {% endfor %}
+                    <p style='color:red'>
+                        ※メールアドレスはパスワードをリセットする際に必要になりますので、登録をお願いします。
+                    </p>
+                    <input class='button_signup' type="submit" value='Sign up'>
+                </form>
+                <br>
+                <p class='return_index'>
+                    <a href="{% url 'ohara:index' %}">🔙 登録をやめてトップページに戻る</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

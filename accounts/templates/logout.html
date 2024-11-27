@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Log out{% endblock %}
+{% block page_title %}logout{% endblock page_title %}
+{% block header_id %}header_logout{% endblock %}
+{% block contents %}
+            <div class="logout_text">
+                <h3 class="logout_h3">ログアウトしました</h3>
+                <p class="return_top"><a href="{% url 'ohara:index' %}">トップページへ</a></p>
+            </div>
+        
+{% endblock %}

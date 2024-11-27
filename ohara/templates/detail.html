@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}投稿詳細{% endblock %}
+{% block page_title %}投稿詳細{% endblock page_title %}
+{% block header_id %}header_keiziban_detail{% endblock %}
+{% block header_img %}<li class="ohara_logo"><a href="{% url 'ohara:index' %}"><img src={% static "assets/img/大原アイコン-removebg-preview.png" %} alt="大原logo"></a></li>{% endblock %}
+{% block contents %}
+    <h2 class="detail_post_title">投稿内容</h2>
+    <div class="post_detail post_detail_div">
+        <p>【投稿タイトル】 {{object.title}}</p>
+        <p>【コメント内容】 {{object.comment}}</p>
+        <p>【投稿日時】 {{object.posted_at}}に投稿</p>
+    </div>
+    <div>
+        {% if request.user == object.user %}
+        <form method="POST">
+            <div class="post_detail_delete">
+                <a href="{% url "ohara:post_delete" object.pk %}" clas="detail_delete_button">削除する</a>
+            </div>
+        </form>
+        {% endif %}
+    </div>
+    <div class="return_keiziban_button">
+        <a href="{% url "ohara:keiziban" %}">投稿一覧に戻る</a>
+    </div>
+
+{% endblock %}
+

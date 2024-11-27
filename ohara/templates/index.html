@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}大原News{% endblock %}
+{% block page_title %}大原NEWS{% endblock page_title %}
+{% block header_id %}header_index{% endblock %}
+{% block contents %}
+    <!-- メインエリア部分 -->
+    <div class="post-info">
+        <img src="{% static "assets/img/other_bomb01_01-removebg-preview.png" %}" alt="爆弾" class="bomb_img">
+        <img src="{% static "assets/img/ボム黒.png" %}" alt="爆弾の上" class="bomb_radius">
+        <p class="post-title">HALLOWEEN!!🎃</p>
+        <p class="Halloween_date">10/31 <span>2024</span></p>
+        <p class="shadow_bomb">)</p>
+    </div>
+    <div class="relative border_dashed">
+        <a href="https://www.instagram.com/p/DAaVEQhSJN_/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
+            <img src="{% static "assets/img/ハロウィン.png" %}" alt="ハロウィン" class="news_img" class="Halloween_img">
+        </a>
+    </div>
+    <div class="post-info">
+        <h2 class="post-title">スポフェス開催!!🎉</h2>
+        <p class="post-date" class="sports_date">10/23 <span>2024</span></p>
+    </div>
+    <div class="relative">
+        <a href="https://www.instagram.com/p/DBdTuX6Se4e/?utm_source=ig_embed&utm_campaign=loading">
+            <img src="{% static "assets/img/スポフェス.png" %}" alt="スポフェス_インスタ" class="news_img">
+        </a>
+    </div>
+    
+{% endblock %}

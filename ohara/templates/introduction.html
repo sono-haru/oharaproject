@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}学校紹介{% endblock %}
+{% block page_title %}学校紹介{% endblock page_title %}
+{% block header_id %}header_introduction{% endblock %}
+{% block header_img %}<li class="ohara_logo"><a href="{% url 'ohara:index' %}"><img src={% static "assets/img/大原アイコン-removebg-preview.png" %} alt="大原logo"></a></li>{% endblock %}
+{% block contents %}
+    <h1 class="h1_introduction">～大原学園のおすすめポイント～</h1>
+    <div class='merit_text_contents'>
+        <ul class="merit_text_ul">
+            <li class='merit_text_li'><span>① メリット1 : </span><a href="#merit_title1">アクセスのしやすさ</a></li>
+            <li class='merit_text_p'><a href="#merit_title1">・水戸駅南口より徒歩6分</a></li>
+
+            <li class='merit_text_li'><span>② メリット2 : </span><a href="#merit_title2">高い就職率</a></li>
+            <li class='merit_text_p'><a href="#merit_title2">・IT業界就職率「99.5%」</a></li>
+
+            <li class='merit_text_li'><span>③ メリット3 : </span><a href="#merit_title3">充実したカリキュラム</a></li>
+            <li class='merit_text_p'><a href="#merit_title3">・一年目から即戦力として活躍できる</a></li>
+
+            <li class='merit_text_li'><span>④ メリット4 : </span><a href="#merit_title4">様々な手厚い制度</a></li>
+            <li class='merit_text_p'><a href="#merit_title4">・教育費無償化対象校・奨学金制度認可校</a></li>
+        </ul>
+    </div>
+    <div class="post-info" id='merit_title1'>
+        <p class='post-title merit_title1_p'>アクセスのしやすさ</p>
+        <p class='school_date'>メリット1<span></span>立地</p>
+    </div>
+    <div class='merit_text'>
+        <p class='access_text'>水戸駅南口から<span>徒歩約6分</span>と駅近でアクセスがしやすいのでお昼ご飯に外食をすることもできます!!</p>
+        <p>放課後に水戸駅で遊んだりして気分転換も👍</p>
+        <p>学校には各階にエレベーターがあるので移動も超ラク!!</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d3212.6301887885297!2d140.47524607449148!3d36.36973554184878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x60222500d88ff1c9%3A0xfec51258baa3005!2z5rC05oi46aeF5Y2X5Y-j44CB44CSMzEwLTAwMTUg6Iyo5Z-O55yM5rC05oi45biC5a6u55S677yR5LiB55uu77yX!3m2!1d36.3696579!2d140.4764003!4m5!1s0x602225068853aa2b%3A0x1dfe333a50717175!2z44CSMzEwLTAwMTUg6Iyo5Z-O55yM5rC05oi45biC5a6u55S677yR5LiB55uu77yZ4oiS77yR77yYIOawtOaIuOaDheWgsUlU44Kv44Oq44Ko44Kk44K_44O85bCC6ZaA5a2m5qChIOKAuzIwMjTlubQ05pyIIOWkp-WOn-WMu-eZguODm-ODhuODq-ims-WFieWwgumWgOWtpuagoeawtOaIuOagoeOCiOOCiuagoeWQjeWkieabtA!3m2!1d36.3700723!2d140.4797309!5e0!3m2!1sja!2sjp!4v1731289107532!5m2!1sja!2sjp" 
+                class='school_map introduction_img' width="450" height="250" style="border:0;" 
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+    
+    <div class="post-info" id='merit_title2'>
+        <p class='post-title merit_title2_p'>高い業界就職率</p>
+        <p class='school_date'>メリット2<span></span>就職率</p>
+    </div>
+    <div class='merit_text'>
+        <a href="https://www.o-hara.ac.jp/senmon/course/jouhou/#jisseki">
+            <img src="{% static "assets/img/就職率.png" %}" alt="就職率" class="syuusyokuritu_img introduction_img">
+        </a>
+
+    </div>
+
+    <div class="post-info" id='merit_title3'>
+        <p class='post-title'>充実したカリキュラム</p>
+        <p class='school_date'>メリット3<span></span>授業内容</p>
+    </div>
+    <div class='merit_text'>
+        <p>二年間の学習でエンジニアとしての基礎はもちろん、様々な応用的な知識を身に着けることができます。</p>
+        <p>入学後数ヶ月はプログラミング言語の基礎を学び、その後にWeb開発等の応用的な授業を行います。</p>
+        <p class='curriculum_text'>(クリックで拡大表示します)</p>
+        <a href="{% static 'assets/img/curriculum.png' %}" data-lightbox="group">
+            <img src="{% static 'assets/img/curriculum.png' %}" class='curriculum_img introduction_img'>
+        </a>
+    </div>
+    <div class="post-info" id='merit_title4'>
+        <p class='post-title'>さまざまな手厚い制度</p>
+        <p class='school_date'>メリット4<span></span>制度</p>
+    </div>
+    <div class='merit_text'>
+        <h2>・教育費無償化対象校</h2>
+        <h2>・奨学金制度認可校</h2>
+        <p>入学前に申請する予約採用や、在学採用などがあります。</p>
+        <p class='syougakukin_link_text'>※詳しくはこちらのページでご確認ください。⤵</p>
+        <a href="https://www.o-hara.ac.jp/senmon/school/mito_it/support/shien/">
+            <img src="{% static 'assets/img/奨学金.png'%}" class='syougakukin_img introduction_img' alt="奨学金">
+        </a>
+    </div>
+{% endblock %}

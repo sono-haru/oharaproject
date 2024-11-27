@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_title %}新規投稿{% endblock page_title %}
+{% block header_id %}header_post{% endblock %} 
+{% block title %}新規投稿{% endblock %}
+
+{% block contents %}
+    <h3 class="sub-title">新規投稿</h3>
+    <div class="post_create">
+        <form method="POST" class="post_form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="posted_button">投稿する</button>
+        </form>
+    </div>
+{% endblock %}

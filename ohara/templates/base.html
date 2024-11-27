@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+
+        <!-- スマホ用に画面サイズを自動で変更 -->
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="description" content="ブレンドコーヒーとヘルシーなオーガニックフードを提供するカフェ">
+        <title>Document</title>
+
+        <!-- lel=""	現在の文書から見たリンク先の関係 -->
+        <link rel="icon" type="image/png" href={% static "assets/img/favicon.png" %}/>
+
+    <!--CSS-->
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+        <link  href="{% static "css/styles.css" %}" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <header class="header" id="{% block header_id %}{% endblock %}">
+            <h2 class="page_title">{% block page_title %}{% endblock %}</h2>
+            <div class="nav">
+                <div class="menu-group">
+                    <a href="{% url "ohara:index" %}"><img src={% static "assets/img/大原アイコン-removebg-preview.png" %} alt="大原logo" class="ohara_logo"></a>
+                    <div class='login_img_div'>
+                        <input type="checkbox" class="user_icon">
+                        <img src={% static "assets/img/ad3f7586539fbaf39cbf3a6bf7ae1dbb-removebg-preview.png" %} alt="ログインアイコン" class="login_img">
+
+                        <div class="menu-dropdown-items">
+                            <ul class="menu-group">
+                                {% if user.is_authenticated %}
+                                <li>
+                                    <a href="javascript:void()" onclick="document.forms.logoutForm.submit()" class="true_login_user_icon">ログアウト</a>
+                                    <form id="logoutForm" action="{% url "accounts:logout" %}" method="POST">
+                                        {% csrf_token %}
+                                    </form>
+                                </li>
+                                <li>
+                                    <a href="{% url "ohara:index" %}"><img src="{% static "assets/img/bookmark_24dp_5F6368.png" %}" alt="ブックマーク" class="bookmark"></a>
+                                </li>
+                            {% else %}
+                                <li class="else_login_user_icon else_login_user_icon1"><a href="{% url "accounts:signup"%}">Sign up</a></li>
+                                <li class="else_login_user_icon else_login_user_icon2"><a href="{% url "accounts:login" %}">ログイン</a></li>
+                            {% endif %}
+                            </ul>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </header>
+
+        <div class="news-contents-wrapper">
+            <article>
+                <!-- メインエリア部分 -->
+                 {% block contents %}{% endblock %}
+                
+            </article>
+            <aside>
+                <h3 class="sub-title">Category</h3>
+                <ul class="sub-menu">
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="javascript:void()" onclick="document.forms.logoutForm.submit()">ログアウト</a>
+                        <form id="logoutForm" action="{% url "accounts:logout" %}" method="POST">
+                            {% csrf_token %}
+                        </form>
+                    </li>
+                    <li><a href="{% url "ohara:index" %}">大原NEWS</a></li>
+                    <li><a href="{% url "ohara:introduction" %}">学校紹介</a></li>
+                    <li><a href="{% url "ohara:contact" %}">お問い合わせ</a></li>
+                    <li><a href="{% url "ohara:view_count" %}">閲覧数</a></li>
+                    <li><a href="{% url "ohara:keiziban" %}">掲示板</a></li>
+                    {% else %}
+                    <li><a href="{% url "accounts:signup"%}">Sign up</a></li>
+                    <li><a href="{% url "accounts:login" %}">ログイン</a></li>
+                    <li><a href="{% url "ohara:index" %}">大原NEWS</a></li>
+                    <li><a href="{% url "ohara:introduction" %}">学校紹介</a></li>
+                    <li><a href="{% url "ohara:contact" %}">お問い合わせ</a></li>
+                    <li><a href="{% url "ohara:view_count" %}">閲覧数</a></li>
+                    <li class="else_login_keizbann"><a href="{% url "accounts:login" %}">掲示板</a></li>
+                    <p class="else_login_text">掲示板はログインをすることで利用可能です。</p>
+                    <div class="batu_button"><img src="{% static "assets/img/9b9a1f4188aa26b142016bbefcb26cd5_t-removebg-preview.png"%}" alt="利用不可" ></div>
+                    {% endif %}
+                </ul>
+
+                <h3 class="sub-title">当サイトについて</h3>
+                
+                <p>※学生が授業の一環で作成したもので、公式サイトではございませんのでご注意ください。</p>                
+            </aside>
+            <div class="open_campus">
+                <a href="https://www.o-hara.ac.jp/senmon/school/mito_it/event/?gad_source=1&gclid=CjwKCAjwyfe4BhAWEiwAkIL8sLd9ibYXPPFdKx-uIi7XY9A-1zPXE0Yz3ZB0hlXkdKWeKVDUE-V2dhoCeBAQAvD_BwE">
+                    <img src={% static "assets/img/オープンキャンパス.jpg" %} alt="オープンキャンパス">
+                </a>
+            </div>
+        </div>
+
+    </body>
+    <footer>
+        <div class="wrapper">
+            <p><small>&copy; 2024 sono_ohara</small></p>
+        </div>
+    </footer>
+</html>

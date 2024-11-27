@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}掲示板{% endblock %}
+{% block page_title %}掲示板{% endblock %}
+{% block header_id %}header_keiziban{% endblock %} 
+{% block contents %}
+    <h3 class="sub-title">掲示板</h3>
+    <div class="keiziban_form">
+        <form method="GET" action="{% url 'ohara:keiziban' %}">
+            <input type="text" name="query" class="post_text" placeholder="検索する">
+            <button type="submit">🔍</button>
+        </form>
+    </div>
+    <div class="create_new_post">
+        <a href="{% url 'ohara:post_create' %}" class="create_new_post_p">新規投稿</a>
+    </div>
+    <div class="post_display">
+        <!-- 投稿一覧 -->
+        <div class="post_div">
+            {% if posts %}
+                <ul>
+                    {% for post in posts %}
+                        <li class="post_detail">
+                            <h4>{{ post.title }}</h4>
+                            <p>{{ post.comment|truncatewords:20 }}</p>
+                            <small>投稿日時: {{ post.posted_at }} 投稿者: {{ post.user.username }}</small>
+                            <button type="button" class="detail_keiziban_button" onclick="location.href='{% url "ohara:keiziban_detail" post.id %}'">詳細</a></button>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>現在、掲示板には投稿がありません。</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
