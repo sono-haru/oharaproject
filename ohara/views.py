@@ -15,6 +15,7 @@ from django.views.generic import DetailView
 from django.views.generic import DeleteView
 from .models import ViewCount
 from django.utils import timezone
+from django.core.mail import EmailMessage
 
 #検索機能
 from .models import Keiziban_post
@@ -35,12 +36,25 @@ class IndexView(TemplateView):
 
 
 class ContactView(generic.FormView):
-    template_name='contact.html'
+    template_name = 'contact.html'
     form_class = forms.OharaForm
     success_url = reverse_lazy('ohara:contact')
- 
-    def form_valid(self,form):
-        form.send_email()
+
+    def form_valid(self, form):
+        name = form.cleaned_data['name']
+        email = form.cleaned_data['email']
+        inquiry = form.cleaned_data['inquiry']
+
+        from_email = 'sonoharu032011@gmail.com'
+        to_list = ['sonoharu032011@gmail.com']
+        message = EmailMessage(
+            subject=f"{name}からの問い合わせ",
+            body=inquiry,
+            from_email=from_email,
+            to=to_list,
+            cc=[email]
+        )
+        message.send()
         return super().form_valid(form)
     
 

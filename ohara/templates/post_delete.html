@@ -10,7 +10,7 @@
             <small>※削除を押すと、元に戻すことはできません</small>
             {% csrf_token %}
             <br>
-            <button class='post_delete_button' type='submit'>削除</button>
+            <button class='' type='submit'>削除</button>
             <a href="{% url 'ohara:keiziban_detail' object.pk %}" class='post_delete_cancel'>キャンセル</a>
         </form>
     </div>

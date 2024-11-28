@@ -12,6 +12,7 @@
         <p>【投稿日時】 {{object.posted_at}}に投稿</p>
     </div>
     <div>
+        {% comment %} リクエストしたユーザーと作成したユーザーが同じとき {% endcomment %}
         {% if request.user == object.user %}
         <form method="POST">
             <div class="post_detail_delete">

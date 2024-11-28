@@ -72,7 +72,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'oharaproject.wsgi.application'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # 使用するSMTPサーバー
+EMAIL_PORT = 587  # SMTPサーバーのポート番号
+EMAIL_USE_TLS = True  # TLSを使用するかどうか
+EMAIL_HOST_USER = 'sonoharu032011@gmail.com'  # 送信元のメールアドレス
+EMAIL_HOST_PASSWORD = 'mwnf cned olgy hmdi'  # 送信元のメールアドレスのパスワード
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases

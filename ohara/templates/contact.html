@@ -5,7 +5,7 @@
 {% block header_home_logo %}<li class="home_logo"><a href="{% url "ohara:index" %}"><img src={% static "assets/img/ホームボタン.png" %} alt="大原logo"></a></li>{% endblock %}
 {% block header_id %}header_contact{% endblock %}
 {% block contents %}
-  <div style="width: 400px; margin: auto;">
+  <div class="contact_main_div" style="width: 400px; margin: auto;">
    <form method="post">
      {% csrf_token %}
      {{ form.non_field_errors }}
