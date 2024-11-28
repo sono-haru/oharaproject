@@ -7,32 +7,30 @@
 {% block contents %}
 <div style="width: 480px; margin: auto;">
     <div class='container'>
-        <div class='row'>
-            <div class='col offset-2'>
-                <form method='post'>
-                    {% csrf_token %}
-                    {% for field in form %}
-                        <p class='signup_box'>
-                            {{ field.label_tag }}<br>
-                            {{ field }}
-                            {% if field.help_text %}
-                                <p><small style='color: grey'>{{ field.help_text }}</small></p>
-                            {% endif %}
-                            {% for error in field.errors %}
-                                <p class='error_text' style='color: red'>{{ error }}</p>
-                            {% endfor %}
-                        </p>
-                    {% endfor %}
-                    <p style='color:red'>
-                        ※メールアドレスはパスワードをリセットする際に必要になりますので、登録をお願いします。
+        <div class='signup_div'>
+            <form method='post'>
+                {% csrf_token %}
+                {% for field in form %}
+                    <p class='signup_box'>
+                        {{ field.label_tag }}<br>
+                        {{ field }}
+                        {% if field.help_text %}
+                            <p class="signup_help_text"><small style='color: grey'>{{ field.help_text }}</small></p>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <p class='signup_error_text' style='color: red'>{{ error }}</p>
+                        {% endfor %}
                     </p>
-                    <input class='button_signup' type="submit" value='Sign up'>
-                </form>
-                <br>
-                <p class='return_index'>
-                    <a href="{% url 'ohara:index' %}">🔙 登録をやめてトップページに戻る</a>
+                {% endfor %}
+                <p class="signup_red_text" style='color:red'>
+                    ※メールアドレスはパスワードをリセットする際に必要になりますので、登録をお願いします。
                 </p>
-            </div>
+                <input class='button_signup' type="submit" value='Sign up'>
+            </form>
+            <br>
+            <p class='signup_return_index'>
+                <a href="{% url 'ohara:index' %}">トップページに戻る</a>
+            </p>
         </div>
     </div>
 </div>

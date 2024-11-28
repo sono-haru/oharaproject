@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         
         <title>{% block title %}{% endblock %}</title>
-        <meta name="description" content="ブレンドコーヒーとヘルシーなオーガニックフードを提供するカフェ">
+        <meta name="description" content="授業で作成したサイト">
         <title>Document</title>
 
         <!-- lel=""	現在の文書から見たリンク先の関係 -->
@@ -41,13 +41,10 @@
                                         {% csrf_token %}
                                     </form>
                                 </li>
-                                <li>
-                                    <a href="{% url "ohara:index" %}"><img src="{% static "assets/img/bookmark_24dp_5F6368.png" %}" alt="ブックマーク" class="bookmark"></a>
-                                </li>
-                            {% else %}
-                                <li class="else_login_user_icon else_login_user_icon1"><a href="{% url "accounts:signup"%}">Sign up</a></li>
-                                <li class="else_login_user_icon else_login_user_icon2"><a href="{% url "accounts:login" %}">ログイン</a></li>
-                            {% endif %}
+                                {% else %}
+                                    <li><a href="{% url "accounts:signup"%}">Sign up</a></li>
+                                    <li><a href="{% url "accounts:login" %}">ログイン</a></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div> 

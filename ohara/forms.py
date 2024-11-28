@@ -12,26 +12,19 @@ class OharaForm(forms.Form):
    
  def __init__(self, *args, **kwargs):
    super().__init__(*args, **kwargs)
- def send_email(self):
-    name = self.cleaned_data['name']
-    email = self.cleaned_data['email']
-    inquiry = self.cleaned_data['inquiry']
-   
-    message = EmailMessage(subject=name + "からの問い合わせ",
-                            body=inquiry,
-                            from_email=email,
-                            to=["admin@skilla.com"],
-                            cc=[email])
-    message.send()
 
 # そらの
+# ログイン時のみ実行
 @login_required
 def post_create(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
+        # フォームのデータを保存するが、まだデータベースにはコミットしない。
         if form.is_valid():
             post = form.save(commit=False)
-            post.user = request.user  # ログインしているユーザーを設定
+            # 投稿のユーザーを現在のログインユーザーに設定。
+            post.user = request.user  
+            # 投稿をデータベースに保存
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
