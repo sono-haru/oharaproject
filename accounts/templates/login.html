@@ -20,11 +20,17 @@
                 name='username'
                 id='id_username'
                 maxlength='150'
-                autocapitalize='none'
+                {% comment %} 大文字使わない {% endcomment %}
+                autocapitalize='none' 
+                {% comment %} 名前自動入力 {% endcomment %}
                 autocomplete='username'
                 class='form-control'
+                {% comment %} ヒントテキスト {% endcomment %}
                 placeholder='ユーザー名'
-                required autofocus>
+                {% comment %} 必須項目化 {% endcomment %}
+                required 
+                {% comment %} 自動フォーカス {% endcomment %}
+                autofocus>
           <br>
           <label for="Password" class='visually-hidden'>Password</label>
           <input  class="login_input login_input2"
@@ -34,7 +40,8 @@
                   autocomplete='current-password'
                   class='form-control'
                   placeholder='パスワード'
-                  required autofocus>
+                  required 
+                  autofocus>
           <br>
           <input class="login_input login_button"
                   type='submit'

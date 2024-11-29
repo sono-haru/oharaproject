@@ -5,16 +5,17 @@ from django import forms
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model=CustomUser
+        # デフォルトでusername,password1,password2(emailも追加)
         fields=('username','email','password1','password2')
  
 class ContactForm(forms.Form):
  
     name = forms.CharField(label='名前')
-    email = forms.EmailField(label='鴨川アドレス')
+    email = forms.EmailField(label='アドレス')
     title = forms.CharField(label='件名')
-    message = forms.CharField(label='かもけんに一言', widget=forms.Textarea)
+    message = forms.CharField(label='内容', widget=forms.Textarea)
  
-    def __ini__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
  
         super().__init__(*args, **kwargs)
  
@@ -25,13 +26,13 @@ class ContactForm(forms.Form):
  
  
         self.fields['title'].widget.attrs['placeholder'] = \
-            'かもけんを入力してください'
+            'titleを入力してください'
        
         self.fields['title'].widget.attrs['class'] = 'form-control'
  
  
         self.fields['message'].widget.attrs['placeholder'] = \
-            'メッセージを鴨川してください'
+            'メッセージを入力してください'
        
         self.fields['message'].widget.attrs['class'] = 'form-control'
        
